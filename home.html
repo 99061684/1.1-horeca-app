@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style/style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="body_container">
+        <div class="topnav">
+            <h1>Café Chez Baz</h1>
+            <a href="home.html">home</a>
+            <a href="menu.html">menu</a>   
+        </div>
+        
+        <img src="images/cafe.jpg" alt="cafe">        
+
+        <!-- <div class="rekening">
+            <p>------------&lt; the amount &gt;------------------</p>
+            <p id="aantal_fris">Het aantal Fris: 0</p> 
+            <p id="aantal_bier">Het aantal Bier: 0</p>
+            <p id="aantal_wijn">Het aantal Wijn: 0</p>
+            <p>--------------&lt; bill &gt;------------------</p>
+            <p id="bedrag1">Fris €0,00</p> 
+            <p id="bedrag2">Bier €0,00</p>
+            <p id="bedrag3">Wijn €0,00</p>
+            <p>_______________</p>
+            <p id="bedrag5">Totaal €0,00</p>
+            <p>---------&lt; price per product &gt;---------</p>
+            <p id="kostenP1">Fris €0,00</p> 
+            <p id="kostenP2">Bier €0,00</p>
+            <p id="kostenP3">Wijn €0,00</p>
+        </div>  -->
+
+        <div class="rekening"> <!-- in deze div komt de rekening te staan  -->
+            <p id="het_aantal"></p>
+            <p id="aantal_fris"></p> 
+            <p id="aantal_bier"></p>
+            <p id="aantal_wijn"></p>
+            <p id="de_rekening"></p> 
+            <p id="bedrag1"></p> 
+            <p id="bedrag2"></p>
+            <p id="bedrag3"></p>
+            <p id="het_totaal"></p> 
+            <p id="bedrag5"></p>
+            <p id="de_ppp"></p> 
+            <p id="kostenP1"></p> 
+            <p id="kostenP2"></p>
+            <p id="kostenP3"></p>
+
+            <!-- 
+                toelichting id
+                            
+                bedrag1 = de te betalen bedrag fris
+                bedrag2 = de te betalen bedrag bier
+                bedrag3 = de te betalen bedrag wijn
+                bedrag5 = het totaal te betalen bedrag
+
+                kostenP1 = prijs per product (fris)
+                kostenP2 = prijs per product (bier)
+                kostenP3 = prijs per product (wijn)
+
+                de_ppp = prijs per product
+            -->
+        </div>
+        
+        <script src="codes_js/opdracht.js"></script>
+    
+        <button onclick="bestelling()">bestelling opgeven</button>
+    </div>
+</body>
+</html>
