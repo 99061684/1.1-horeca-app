@@ -1,3 +1,5 @@
+/* ************************ class styling ************************ */
+
 .body_container{
     width: 900px;
     border: 2px dashed blue;
@@ -13,6 +15,15 @@
     background-color: rgba(20, 20, 20, 0.863);
     overflow: auto;
 }
+
+/* ************************ id styling ************************ */
+
+#let_op{
+    color: red;
+    font-size: 15px;
+}
+
+/* ************************ element styling ************************ */
 
 h1 {
     color: white;
@@ -34,7 +45,6 @@ img {
     margin-right: auto;
 
 }
-
 
 a {
     text-decoration: none;

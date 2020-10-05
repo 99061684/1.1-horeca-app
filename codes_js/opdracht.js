@@ -20,11 +20,19 @@ var fris_cost = 0;
 var bier_cost = 0;
 var wijn_cost = 0;
 
-
 //het standaard aantal producten dat je koopt.
 var aantal_fris = 0;
 var aantal_bier = 0;
 var aantal_wijn = 0;
+
+//tijdelijke string opslag
+var string1 = "";
+var string2 = "";
+var string3 = "";
+//tijdelijke var opslag 
+var tijdelijke_opslag1 = 0;
+var tijdelijke_opslag2 = 0;
+var tijdelijke_opslag3 = 0;
 
 //tekst bij de rekening kopjes
 var het_aantal = "------------&lt; <b> de aantallen gekochte producten </b> &gt;------------------";
@@ -146,40 +154,65 @@ function rekening(){ //geeft de rekening weer op de website
 function bestelling(){ //neemt de bestelling op
   prijsweergave();
   rekening_check = false;
-  while (rekening_check == false) {
+  while (rekening_check == false) { //doorgaan met vragen na invoeren bestelling
     breakCheck1 = false;
     var bestelling = prompt("Welke bestelling wilt u toevoegen?"); //een popup met de vraag wat je wil hebben
     
-    if (bestelling == "fris") {
-      aantal_fris = prompt("Hoeveel fris wilt u toevoegen aan uw bestelling?"); //een popup met de vraag hoeveel je wil hebben van een bepaald product
+    if (bestelling == "fris") { //checken wat er besteld word en daarna doorgaan met de volgende vraag
+      string1 = prompt("Hoeveel fris wilt u toevoegen aan uw bestelling?"); //een popup met de vraag hoeveel je wil hebben van een bepaald product
+      
+      tijdelijke_opslag1 = parseInt(string1); //string prompt omzetten naar int en opslaan in een tijdelijke opslag
 
-    } else if (bestelling == "bier") {
-      aantal_bier = prompt("Hoeveel bier wilt u toevoegen aan uw bestelling?"); //een popup met de vraag hoeveel je wil hebben van een bepaald product
+      if (!(isNaN(tijdelijke_opslag1))) { //checken of de tijdelijke opslag een int bevat
+        aantal_fris = tijdelijke_opslag1;
+      } else {
+        alert("U heeft een ongeldige invoer gedaan. Dit kan niet worden toegevoegd aan uw bestelling"); //melding bij ongeldige invoer
+      }
+      
 
-    } else if (bestelling == "wijn") {
-      aantal_wijn = prompt("Hoeveel wijn wilt u toevoegen aan uw bestelling?"); //een popup met de vraag hoeveel je wil hebben van een bepaald product
+    } else if (bestelling == "bier") { //checken wat er besteld word en daarna doorgaan met de volgende vraag
+      string2 = prompt("Hoeveel bier wilt u toevoegen aan uw bestelling?"); //een popup met de vraag hoeveel je wil hebben van een bepaald product
+
+      tijdelijke_opslag2 = parseInt(string2); //string prompt omzetten naar int en opslaan in een tijdelijke opslag
+
+      if (!(isNaN(tijdelijke_opslag2))) { //checken of de tijdelijke opslag een int bevat
+        aantal_bier = tijdelijke_opslag2;
+      } else {
+        alert("U heeft een ongeldige invoer gedaan. Dit kan niet worden toegevoegd aan uw bestelling"); //melding bij ongeldige invoer
+      }
+
+    } else if (bestelling == "wijn") { //checken wat er besteld word en daarna doorgaan met de volgende vraag
+      string3 = prompt("Hoeveel wijn wilt u toevoegen aan uw bestelling?"); //een popup met de vraag hoeveel je wil hebben van een bepaald product
+
+      tijdelijke_opslag3 = parseInt(string3); //string prompt omzetten naar int en opslaan in een tijdelijke opslag
+
+      if (!(isNaN(tijdelijke_opslag3))) { //checken of de tijdelijke opslag een int bevat
+        aantal_wijn = tijdelijke_opslag3;
+      } else {
+        alert("U heeft een ongeldige invoer gedaan. Dit kan niet worden toegevoegd aan uw bestelling"); //melding bij ongeldige invoer
+      }
 
     } else if (bestelling == "stop") { //als stop word opgegeven bij de prompt bestilling word de rekening weergeven
-      if (aantal_fris == 0 && aantal_bier == 0 && aantal_wijn == 0) {
+      if (aantal_fris == 0 && aantal_bier == 0 && aantal_wijn == 0) { //checken of er iets is besteld
         var doorgaan_vraag = prompt("u heeft geen bestelling opgenomen. Wilt u toch de rekening zien? (Y/N)");
 
-        if (doorgaan_vraag == "Y") {
+        if (doorgaan_vraag == "Y") { // checken of je door wil gaan naar de rekening als je niks hebt ingevuld en anders doorgaan met de bestelling
           rekening();
           rekening_check = true;
-        } else if (doorgaan_vraag == "N") {
+        } else if (doorgaan_vraag == "N") { // checken of je door wil gaan naar de rekening als je niks hebt ingevuld en anders doorgaan met de bestelling
           rekening_check = false;
           breakCheck1 = true;
           break;
         }
         break;
-      } else {
+      } else { 
         rekening();
         rekening_check = true;  
       }
          
 
-    }else {
-      alert("U heeft een ongeldige invoer gedaan. Uw bestelling kan niet worden toegevoegd"); //melding bij ongeldige invoer
+    }else { //bij een ongeldige invoer melding geven
+      alert("U heeft een ongeldige invoer gedaan. Dit kan niet worden toegevoegd aan uw bestelling"); //melding bij ongeldige invoer
     }
   }
   
