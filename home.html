@@ -3,18 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="style/style.css">
+    <script src="codes_js/opdracht.js"></script> 
     <title>Document</title>
 </head>
 <body>
     <div class="body_container">
-        <div class="topnav">
+        <div class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
             <h1>Café Chez Baz</h1>
-            <a href="home.html">home</a>
-            <a href="menu.html">menu</a>   
+            <div class="home_link">
+                <a class="nav-link bg-info text-white" href="home.html">home</a>
+            </div>
+            <div class="menu_link">
+                <a class="nav-link bg-info text-white" href="menu.html">menu</a>
+            </div>                  
         </div>
         
-        <img src="images/cafe.jpg" alt="cafe">        
+        <img class="jumbotron jumbotron-fluid img-fluid mx-auto d-block" src="images/cafe.jpg" alt="cafe">        
 
         <!-- <div class="rekening">
             <p>------------&lt; the amount &gt;------------------</p>
@@ -33,58 +39,61 @@
             <p id="kostenP3">Wijn €0,00</p>
         </div>  -->
 
-        <p>uitleg bestellen:</p>
-        <ol>
-            <li>druk op de knop bestellen</li>
-            <li>vul in wat je wilt bestellen (1 ding tegelijk)</li>
-            <li>daarna vul je het aantal van wat je wil bestellen in</li>
-            <li>als je dat hebt gedaan word opnieuw gevraagd wat je wilt bestellen (zie stap 2)</li>
-            <li>als je klaar bent met bestellen typ je bij stap 1 <b>"stop"</b> in</li>
+        <div class="container">
+            <p>uitleg bestellen:</p>
+            <ol>
+                <li>druk op de knop bestellen</li>
+                <li>vul in wat je wilt bestellen (1 ding tegelijk)</li>
+                <li>daarna vul je het aantal van wat je wil bestellen in</li>
+                <li>als je dat hebt gedaan word opnieuw gevraagd wat je wilt bestellen (zie stap 2)</li>
+                <li>als je klaar bent met bestellen typ je bij stap 1 <b>"stop"</b> in</li>
 
-            <p id="let_op"><b>let op typfouten en spaties!</b></p>
-        </ol>
+                <p id="let_op"><b>let op. gebruik kleine letters bij invoer van de bestelling en pas op voor typfouten en spaties!</b></p>
+            </ol>
 
-        <div class="rekening"> <!-- in deze div komt de rekening te staan  -->
-            <p id="het_aantal"></p>
-            <p id="aantal_fris"></p> 
-            <p id="aantal_bier"></p>
-            <p id="aantal_wijn"></p>
-            <p id="aantal_bitterballen1"></p>
-            <p id="aantal_bitterballen2"></p>
-            <p id="de_rekening"></p> 
-            <p id="bedrag1"></p> 
-            <p id="bedrag2"></p>
-            <p id="bedrag3"></p>
-            <p id="bedrag4"></p>
-            <p id="bedrag5"></p>
-            <p id="het_totaal"></p> 
-            <p id="bedrag6"></p>
-            <p id="de_ppp"></p> 
-            <p id="kostenP1"></p> 
-            <p id="kostenP2"></p>
-            <p id="kostenP3"></p>
-            <p id="kostenP4"></p>
-            <p id="kostenP5"></p>
+            <div class="rekening"> <!-- in deze div komt de rekening te staan  -->
+                <p id="het_aantal"></p>
+                <p id="aantal_fris"></p> 
+                <p id="aantal_bier"></p>
+                <p id="aantal_wijn"></p>
+                <p id="aantal_bitterballen1"></p>
+                <p id="aantal_bitterballen2"></p>
+                <p id="de_rekening"></p> 
+                <p id="bedrag1"></p> 
+                <p id="bedrag2"></p>
+                <p id="bedrag3"></p>
+                <p id="bedrag4"></p>
+                <p id="bedrag5"></p>
+                <p id="het_totaal"></p> 
+                <p id="bedrag6"></p>
+                <p id="de_ppp"></p> 
+                <p id="kostenP1"></p> 
+                <p id="kostenP2"></p>
+                <p id="kostenP3"></p>
+                <p id="kostenP4"></p>
+                <p id="kostenP5"></p>
 
-            <!-- 
-                toelichting id
-                            
-                bedrag1 = de te betalen bedrag fris
-                bedrag2 = de te betalen bedrag bier
-                bedrag3 = de te betalen bedrag wijn
-                bedrag5 = het totaal te betalen bedrag
+                <!-- 
+                    toelichting id
+                                
+                    bedrag1 = de te betalen bedrag fris
+                    bedrag2 = de te betalen bedrag bier
+                    bedrag3 = de te betalen bedrag wijn
+                    bedrag5 = het totaal te betalen bedrag
 
-                kostenP1 = prijs per product (fris)
-                kostenP2 = prijs per product (bier)
-                kostenP3 = prijs per product (wijn)
+                    kostenP1 = prijs per product (fris)
+                    kostenP2 = prijs per product (bier)
+                    kostenP3 = prijs per product (wijn)
 
-                de_ppp = prijs per product
-            -->
+                    de_ppp = prijs per product
+                -->
+            </div>
+
+            <button class="btn btn-success btn-sm" onclick="bestelling()">bestelling opgeven</button>
+            <br>
+            <img src="images/bestellen.jpg" alt="bestellen">
+
         </div>
-        
-        <script src="codes_js/opdracht.js"></script>
-    
-        <button onclick="bestelling()">bestelling opgeven</button>
     </div>
 </body>
 </html>

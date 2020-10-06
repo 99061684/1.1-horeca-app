@@ -121,6 +121,8 @@ function prijsweergave2(){ //de standaard prijs van het product weergeven op de 
 }
 
 function rekening(){ //geeft de rekening weer op de website
+  prijsweergave();
+
   if (het_aantal != null) { //deze funtie zorgt ervoor dat het element met het id tussen "...." verandert in de tekst eronder. 
   document.getElementById("het_aantal").innerHTML =
   het_aantal;
@@ -215,7 +217,6 @@ function rekening(){ //geeft de rekening weer op de website
 }
 
 function bestelling(){ //neemt de bestelling op
-  prijsweergave();
   rekening_check = false;
   while (rekening_check == false) { //doorgaan met vragen na invoeren bestelling
     breakCheck1 = false;
@@ -314,7 +315,7 @@ function bestelling(){ //neemt de bestelling op
       
 
     }else if (bestelling == "stop") { //als stop word opgegeven bij de prompt bestilling word de rekening weergeven
-      if (aantal_fris == 0 && aantal_bier == 0 && aantal_wijn == 0 && aantal_bitterballen1 && aantal_bitterballen2) { //checken of er iets is besteld
+      if (aantal_fris == 0 && aantal_bier == 0 && aantal_wijn == 0 && aantal_bitterballen1 == 0 && aantal_bitterballen2 == 0) { //checken of er iets is besteld
         var doorgaan_vraag = prompt("u heeft geen bestelling opgenomen. Wilt u toch de rekening zien? (Y/N)");
 
         if (doorgaan_vraag == "Y") { // checken of je door wil gaan naar de rekening als je niks hebt ingevuld en anders stoppen met de bestelling

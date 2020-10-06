@@ -1,66 +1,54 @@
 /* ************************ class styling ************************ */
 
-.body_container{
-    width: 900px;
-    border: 2px dashed blue;
-    margin: 0 auto;
+.home_link {
+    position: absolute;
+    margin-right: 20px;
+    right: 200px;    
 }
 
-.rekening {
-    /* background-color: ; */
-    width: max-content;
+.menu_link {
+    position: absolute;
+    margin-right: 20px;
+    right: 100px;
 }
 
-.topnav {
-    background-color: rgba(20, 20, 20, 0.863);
-    overflow: auto;
+.body_container {
+    margin: auto;
 }
 
 /* ************************ id styling ************************ */
 
-#let_op{
+#let_op {
     color: red;
-    font-size: 15px;
+    font-size: 17px;
+}
+
+#drinken_kopje {
+    font-size: 17px;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+}
+
+#warme_snacks_kopje {
+    font-size: 17px;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
 }
 
 /* ************************ element styling ************************ */
-
 h1 {
-    color: white;
-    font-size: 35px;
-}
-
-p {
-    color: #000;
-    font-size: 20px;
-    font-family: Calibri, sans-serif;
+    color: #878b8f;
 }
 
 img {
-    width: 800px;
-    height: 500px; 
-
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-
+    max-width: 1000px;
+    max-height: 1000px;
 }
 
-a {
-    text-decoration: none;
-    color: black;
-    background-color: blanchedalmond;
-    border: 2px solid gold;
-    font-size: 17px;
-    
-    bottom: 55px;
-    /* margin-bottom: 0px; */
-    right: 90px; 
-    float: right;
-    position: relative; 
+p {
+    font-size: 30px;
+}
 
-    margin: auto;
-    margin-left: 10px;
-    width: 5%;
-    padding: 10px; 
+button {
+    margin-bottom: 30px;
 }
