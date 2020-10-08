@@ -16,6 +16,28 @@
     margin: auto;
 }
 
+.container p {
+    font-size: 30px;
+}
+
+.rekening p {
+    font-size: 20px;
+}
+
+.rekening {
+    display: grid;
+}
+
+.rekening_deel1 {
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+
+.rekening_deel2 {
+    grid-column-start: 3;
+    grid-column-end: 5;
+}
+
 /* ************************ id styling ************************ */
 
 #let_op {
@@ -35,6 +57,10 @@
     margin-bottom: 0px;
 }
 
+#het_totaal {
+    line-height: 1;
+}
+
 /* ************************ element styling ************************ */
 h1 {
     color: #878b8f;
@@ -43,10 +69,6 @@ h1 {
 img {
     max-width: 1000px;
     max-height: 1000px;
-}
-
-p {
-    font-size: 30px;
 }
 
 button {

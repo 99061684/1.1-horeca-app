@@ -6,6 +6,8 @@ opdracht: Horeca App
 
 */
 
+//Math.abs(negatief); -> postief
+
 //iets checken
 var rekening_check = false;
 var breakCheck1 = false;
@@ -31,20 +33,8 @@ var aantal_wijn = 0;
 var aantal_bitterballen1 = 0; //schaal van 8 stuks
 var aantal_bitterballen2 = 0; //schaal van 16 stuks
 
-//tijdelijke string opslag
-var string1 = "";
-var string2 = "";
-var string3 = "";
-var string4 = "";
-var string5 = "";
-var string6 = "";
 //tijdelijke var opslag 
 var tijdelijke_opslag1 = 0;
-var tijdelijke_opslag2 = 0;
-var tijdelijke_opslag3 = 0;
-var tijdelijke_opslag4 = 0;
-var tijdelijke_opslag5 = 0;
-var tijdelijke_opslag6 = 0;
 
 //tekst bij de rekening kopjes
 var het_aantal = "------------&lt; <b> de aantallen gekochte producten </b> &gt;------------------";
@@ -53,14 +43,14 @@ var het_totaal = "---------------";
 var de_ppp = "---------&lt; <b> prijs per product </b> &gt;---------";
 
 //functies vooraf aanspreken
-prijsweergave2();
+prijsweergave_menu();
 
 // ----- uitleg woorden, functies, etc. ------
 //bestelling = neemt de bestelling op en veranderd het eerder opgegeven aantal fris en telt het nieuwe opgegeven aantal fris erbij op
 //bestelling2 (verouderd)= neemt de bestelling op en veranderd het eerder opgegeven aantal fris in het nieuwe opgegeven aantal
 //verouderd = oudere versie bijv. geen mogelijkheid tot bestellen bitterballen
 
-function prijsweergave(){ //de standaard prijs van het product weergeven op de site
+function prijsweergave_rekening(){ //de standaard prijs van het product weergeven op de site
 
   if (fris_price != null) { //deze funtie zorgt ervoor dat het element met het id tussen "...." verandert in de tekst eronder. 
     document.getElementById("kostenP1").innerHTML =
@@ -90,7 +80,7 @@ function prijsweergave(){ //de standaard prijs van het product weergeven op de s
   }
 }
 
-function prijsweergave2(){ //de standaard prijs van het product weergeven op de menu pagina
+function prijsweergave_menu(){ //de standaard prijs van het product weergeven op de menu pagina
 
   if (fris_price != null) { //deze funtie zorgt ervoor dat het element met het id tussen "...." verandert in de tekst eronder. 
     document.getElementById("menu_fris").innerHTML =
@@ -120,8 +110,8 @@ function prijsweergave2(){ //de standaard prijs van het product weergeven op de 
   }
 }
 
-function rekening(){ //geeft de rekening weer op de website
-  prijsweergave();
+function rekening_weergave(){ //geeft de rekening weer op de website
+  prijsweergave_rekening();
 
   if (het_aantal != null) { //deze funtie zorgt ervoor dat het element met het id tussen "...." verandert in de tekst eronder. 
   document.getElementById("het_aantal").innerHTML =
@@ -144,35 +134,55 @@ function rekening(){ //geeft de rekening weer op de website
   }
   
   if (aantal_fris != null && aantal_fris != 0) { //deze funtie zorgt ervoor dat het element met het id tussen "...." verandert in de tekst eronder. 
-  document.getElementById("aantal_fris").innerHTML =
-  "Het aantal Fris: " + aantal_fris;
+    document.getElementById("aantal_fris").innerHTML =
+    "Het aantal Fris: " + aantal_fris;
+  } else if (aantal_fris == 0) {
+    document.getElementById("aantal_fris").innerHTML =
+    "";
   }
 
   if (aantal_bier != null && aantal_bier != 0) { //deze funtie zorgt ervoor dat het element met het id tussen "...." verandert in de tekst eronder. 
-  document.getElementById("aantal_bier").innerHTML =
-  "Het aantal Bier: " + aantal_bier;
+    document.getElementById("aantal_bier").innerHTML =
+    "Het aantal Bier: " + aantal_bier;
+  } else if (aantal_bier == 0) {
+    document.getElementById("aantal_bier").innerHTML =
+    "";
   }
 
   if (aantal_wijn != null && aantal_wijn != 0) { //deze funtie zorgt ervoor dat het element met het id tussen "...." verandert in de tekst eronder. 
-  document.getElementById("aantal_wijn").innerHTML =
-  "Het aantal Wijn: " + aantal_wijn;
+    document.getElementById("aantal_wijn").innerHTML =
+    "Het aantal Wijn: " + aantal_wijn;
+  } else if (aantal_wijn == 0) {
+    document.getElementById("aantal_wijn").innerHTML =
+    "";
   }
 
   if (aantal_bitterballen1 != null && aantal_bitterballen1 != 0) { //deze funtie zorgt ervoor dat het element met het id tussen "...." verandert in de tekst eronder. 
   document.getElementById("aantal_bitterballen1").innerHTML =
   "Het aantal bitterballen schalen 8 stuks: " + aantal_bitterballen1;
+  } else if (aantal_bitterballen1 == 0) {
+    document.getElementById("aantal_bitterballen1").innerHTML =
+    "";
   }
 
   if (aantal_bitterballen2 != null && aantal_bitterballen2 != 0) { //deze funtie zorgt ervoor dat het element met het id tussen "...." verandert in de tekst eronder. 
   document.getElementById("aantal_bitterballen2").innerHTML =
   "Het aantal bitterballen schalen 16 stuks: " + aantal_bitterballen2;
+  } else if (aantal_bitterballen2 == 0) {
+    document.getElementById("aantal_bitterballen2").innerHTML =
+    "";
   }
+    
+  
 
   fris_cost = fris_price * aantal_fris;  //de berekening voor het te betalen bedrag van een product
 
   if (fris_cost != null && fris_cost != 0) { //deze funtie zorgt ervoor dat het element met het id tussen "...." verandert in de tekst eronder. 
   document.getElementById("bedrag1").innerHTML =
   "Fris €" + fris_cost.toFixed(2).replace('.', ',');
+  } else if (fris_cost == 0) {
+    document.getElementById("bedrag1").innerHTML =
+    "";
   }
 
   bier_cost = bier_price * aantal_bier;  //de berekening voor het te betalen bedrag van een product
@@ -181,6 +191,9 @@ function rekening(){ //geeft de rekening weer op de website
   if (bier_cost != null && bier_cost != 0) { //deze funtie zorgt ervoor dat het element met het id tussen "...." verandert in de tekst eronder. 
     document.getElementById("bedrag2").innerHTML =
     "Bier €" + bier_cost.toFixed(2).replace('.', ',');
+  } else if (bier_cost == 0) {
+    document.getElementById("bedrag2").innerHTML =
+    "";
   }
 
   wijn_cost = wijn_price * aantal_wijn;  //de berekening voor het te betalen bedrag van een product
@@ -189,6 +202,9 @@ function rekening(){ //geeft de rekening weer op de website
   if (wijn_cost != null  && wijn_cost != 0) { //deze funtie zorgt ervoor dat het element met het id tussen "...." verandert in de tekst eronder. 
     document.getElementById("bedrag3").innerHTML =
     "Wijn €" + wijn_cost.toFixed(2).replace('.', ',');
+  } else if (wijn_cost == 0) {
+    document.getElementById("bedrag3").innerHTML =
+    "";
   }
 
   bitterballen_cost1 = bitterballen_price1 * aantal_bitterballen1;  //de berekening voor het te betalen bedrag van een product
@@ -197,6 +213,9 @@ function rekening(){ //geeft de rekening weer op de website
   if (bitterballen_cost1 != null  && bitterballen_cost1 != 0) { //deze funtie zorgt ervoor dat het element met het id tussen "...." verandert in de tekst eronder. 
     document.getElementById("bedrag4").innerHTML =
     "Bitterballen schaal 8 stuks €" + bitterballen_cost1.toFixed(2).replace('.', ',');
+  } else if (bitterballen_cost1 == 0) {
+    document.getElementById("bedrag4").innerHTML =
+    "";
   }
 
   bitterballen_cost2 = bitterballen_price2 * aantal_bitterballen2;  //de berekening voor het te betalen bedrag van een product
@@ -205,6 +224,9 @@ function rekening(){ //geeft de rekening weer op de website
   if (bitterballen_cost2 != null  && bitterballen_cost2 != 0) { //deze funtie zorgt ervoor dat het element met het id tussen "...." verandert in de tekst eronder. 
     document.getElementById("bedrag5").innerHTML =
     "Bitterballen schaal 16 stuks €" + bitterballen_cost2.toFixed(2).replace('.', ',');
+  } else if (bitterballen_cost2 == 0) {
+    document.getElementById("bedrag5").innerHTML =
+    "";
   }
 
   var totaal_cost = fris_cost + bier_cost + wijn_cost + bitterballen_cost1 + bitterballen_cost2;
@@ -223,29 +245,29 @@ function bestelling(){ //neemt de bestelling op
     var bestelling = prompt("Welke bestelling wilt u toevoegen?"); //een popup met de vraag wat je wil hebben
     
     if (bestelling == "fris") { //checken wat er besteld word en daarna doorgaan met de volgende vraag
-      string1 = prompt("Hoeveel fris wilt u toevoegen aan uw bestelling?", "0"); //een popup met de vraag hoeveel je wil hebben van een bepaald product
-      
-      tijdelijke_opslag1 = parseInt(string1); //string prompt omzetten naar int en opslaan in een tijdelijke opslag
+      tijdelijke_opslag1 = parseInt(prompt("Hoeveel fris wilt u toevoegen aan uw bestelling?", "0")); //een popup met de vraag hoeveel je wil hebben van een bepaald product
 
       if (!(isNaN(tijdelijke_opslag1))) { //checken of de tijdelijke opslag een int bevat
-        if (tijdelijke_opslag1 >= 0 || (aantal_fris - tijdelijke_opslag1) >= 0) {
+        if (tijdelijke_opslag1 >= 0) {
+          aantal_fris = aantal_fris + tijdelijke_opslag1;
+        } else if ((aantal_fris >= Math.abs(tijdelijke_opslag1))){
           aantal_fris = aantal_fris + tijdelijke_opslag1;
         } else {
           alert("U geeft een negatief aantal op wat minder is dan het aantal fris dat u heeft besteld - het aantal dat u wilt eraf wilt hebben");
-        }       
+        }        
       } else {
         alert("U heeft een ongeldige invoer gedaan. Dit kan niet worden toegevoegd aan uw bestelling"); //melding bij ongeldige invoer
       }
       
 
     } else if (bestelling == "bier") { //checken wat er besteld word en daarna doorgaan met de volgende vraag
-      string2 = prompt("Hoeveel bier wilt u toevoegen aan uw bestelling?", "0"); //een popup met de vraag hoeveel je wil hebben van een bepaald product
+      tijdelijke_opslag1 = parseInt(prompt("Hoeveel bier wilt u toevoegen aan uw bestelling?", "0")); //een popup met de vraag hoeveel je wil hebben van een bepaald product
 
-      tijdelijke_opslag2 = parseInt(string2); //string prompt omzetten naar int en opslaan in een tijdelijke opslag
-
-      if (!(isNaN(tijdelijke_opslag2))) { //checken of de tijdelijke opslag een int bevat
-        if (tijdelijke_opslag2 >= 0 || (aantal_bier - tijdelijke_opslag2) >= 0) {
-          aantal_bier = aantal_bier + tijdelijke_opslag2;
+      if (!(isNaN(tijdelijke_opslag1))) { //checken of de tijdelijke opslag een int bevat
+        if (tijdelijke_opslag1 >= 0) {
+          aantal_bier = aantal_bier + tijdelijke_opslag1;
+        } else if ((aantal_bier >= Math.abs(tijdelijke_opslag1))){
+          aantal_bier = aantal_bier + tijdelijke_opslag1;
         } else {
           alert("U geeft een negatief aantal op wat minder is dan het aantal bier dat u heeft besteld - het aantal dat u wilt eraf wilt hebben");
         } 
@@ -254,35 +276,34 @@ function bestelling(){ //neemt de bestelling op
       }
 
     } else if (bestelling == "wijn") { //checken wat er besteld word en daarna doorgaan met de volgende vraag
-      string3 = prompt("Hoeveel wijn wilt u toevoegen aan uw bestelling?", "0"); //een popup met de vraag hoeveel je wil hebben van een bepaald product
+      tijdelijke_opslag1 = parseInt(prompt("Hoeveel wijn wilt u toevoegen aan uw bestelling?", "0")); //een popup met de vraag hoeveel je wil hebben van een bepaald product
 
-      tijdelijke_opslag3 = parseInt(string3); //string prompt omzetten naar int en opslaan in een tijdelijke opslag
-
-      if (!(isNaN(tijdelijke_opslag3))) { //checken of de tijdelijke opslag een int bevat
-        if (tijdelijke_opslag3 >= 0 || (aantal_wijn - tijdelijke_opslag3) >= 0) {
-          aantal_wijn = aantal_wijn + tijdelijke_opslag3;
+      if (!(isNaN(tijdelijke_opslag1))) { //checken of de tijdelijke opslag een int bevat
+        if (tijdelijke_opslag1 >= 0) {
+          aantal_wijn = aantal_wijn + tijdelijke_opslag1;
+        } else if ((aantal_wijn >= Math.abs(tijdelijke_opslag1))){
+          aantal_wijn = aantal_wijn + tijdelijke_opslag1;
         } else {
-          alert("U geeft een negatief aantal op wat minder is dan het aantal bier dat u heeft besteld - het aantal dat u wilt eraf wilt hebben");
+          alert("U geeft een negatief aantal op wat minder is dan het aantal wijn dat u heeft besteld - het aantal dat u wilt eraf wilt hebben");
         }        
       } else {
         alert("U heeft een ongeldige invoer gedaan. Dit kan niet worden toegevoegd aan uw bestelling"); //melding bij ongeldige invoer
       }
 
     } else if (bestelling == "snack" || bestelling == "bitterballen") { //checken wat er besteld word en daarna doorgaan met de volgende vraag
-      string4 = prompt("Hoeveel bitterballen wilt u toevoegen (8 of 16)?", "8"); //een popup met de vraag hoeveel je wil hebben van een bepaald product
+      tijdelijke_opslag1 = parseInt(prompt("Hoeveel bitterballen wilt u toevoegen (8 of 16)?", "8")); //een popup met de vraag hoeveel je wil hebben van een bepaald product
 
-      tijdelijke_opslag4 = parseInt(string4); //string prompt omzetten naar int en opslaan in een tijdelijke opslag
+      if (!(isNaN(tijdelijke_opslag1))) {
+        if (tijdelijke_opslag1 == 8) {
+          tijdelijke_opslag1 = parseInt(prompt("Hoeveel bitterbalschalen van 8 bitterballen wilt u bestellen?", "0")); //een popup met de vraag hoeveel je wil hebben van een bepaald product
 
-      if (!(isNaN(tijdelijke_opslag4))) {
-        if (tijdelijke_opslag4 == 8) {
-          string5 = prompt("Hoeveel bitterbalschalen van 8 bitterballen wilt u bestellen?", "0"); //een popup met de vraag hoeveel je wil hebben van een bepaald product
-
-          tijdelijke_opslag5 = parseInt(string5);
-          if (!(isNaN(tijdelijke_opslag5))) {
-            if (tijdelijke_opslag5 >= 0 || (aantal_bitterballen1 - tijdelijke_opslag5) >= 0) {
-              aantal_bitterballen1 = aantal_bitterballen1 + tijdelijke_opslag5;
+          if (!(isNaN(tijdelijke_opslag1))) {
+            if (tijdelijke_opslag1 >= 0) {
+              aantal_bitterballen1 = aantal_bitterballen1 + tijdelijke_opslag1;
+            } else if ((aantal_bitterballen1 >= Math.abs(tijdelijke_opslag1))){
+              aantal_bitterballen1 = aantal_bitterballen1 + tijdelijke_opslag1;
             } else {
-              alert("U geeft een negatief aantal op wat minder is dan het aantal bier dat u heeft besteld - het aantal dat u wilt eraf wilt hebben");
+              alert("U geeft een negatief aantal op wat minder is dan het aantal bitterballen (schaal 8 stuks) dat u heeft besteld - het aantal dat u wilt eraf wilt hebben");
             }
 
           } else {
@@ -290,15 +311,16 @@ function bestelling(){ //neemt de bestelling op
           }
 
                     
-        } else if (tijdelijke_opslag4 == 16) {
-          string6 = prompt("Hoeveel bitterbalschalen van 16 bitterballen wilt u bestellen?", "0"); //een popup met de vraag hoeveel je wil hebben van een bepaald product
+        } else if (tijdelijke_opslag1 == 16) {
+          tijdelijke_opslag1 = parseInt(prompt("Hoeveel bitterbalschalen van 16 bitterballen wilt u bestellen?", "0")); //een popup met de vraag hoeveel je wil hebben van een bepaald product
 
-          tijdelijke_opslag6 = parseInt(string6);
-          if (!(isNaN(tijdelijke_opslag6))) {
-            if (tijdelijke_opslag6 >= 0 || (aantal_bitterballen2 - tijdelijke_opslag6) >= 0) {
-              aantal_bitterballen2 = aantal_bitterballen2 + tijdelijke_opslag6;
+          if (!(isNaN(tijdelijke_opslag1))) {
+            if (tijdelijke_opslag1 >= 0) {
+              aantal_bitterballen2 = aantal_bitterballen2 + tijdelijke_opslag1;
+            } else if ((aantal_bitterballen2 >= Math.abs(tijdelijke_opslag1))){
+              aantal_bitterballen2 = aantal_bitterballen2 + tijdelijke_opslag1;
             } else {
-              alert("U geeft een negatief aantal op wat minder is dan het aantal bier dat u heeft besteld - het aantal dat u wilt eraf wilt hebben");
+              alert("U geeft een negatief aantal op wat minder is dan het aantal bitterballen (schaal 16 stuks) dat u heeft besteld - het aantal dat u wilt eraf wilt hebben");
             }
 
           } else {
@@ -319,7 +341,7 @@ function bestelling(){ //neemt de bestelling op
         var doorgaan_vraag = prompt("u heeft geen bestelling opgenomen. Wilt u toch de rekening zien? (Y/N)");
 
         if (doorgaan_vraag == "Y") { // checken of je door wil gaan naar de rekening als je niks hebt ingevuld en anders stoppen met de bestelling
-          rekening();
+          rekening_weergave();
           rekening_check = true;
         } else if (doorgaan_vraag == "N") { // checken of je door wil gaan naar de rekening als je niks hebt ingevuld en anders stoppen met de bestelling
           rekening_check = false;
@@ -328,7 +350,7 @@ function bestelling(){ //neemt de bestelling op
         }
         break;
       } else { 
-        rekening();
+        rekening_weergave();
         rekening_check = true;  
       }
          
@@ -340,73 +362,72 @@ function bestelling(){ //neemt de bestelling op
   
 }
 
-function bestelling2(){ //neemt de bestelling versie 2 (verouderd). 
-  prijsweergave();
-  rekening_check = false;
-  while (rekening_check == false) { //doorgaan met vragen na invoeren bestelling
-    breakCheck1 = false;
-    var bestelling = prompt("Welke bestelling wilt u toevoegen?"); //een popup met de vraag wat je wil hebben
+// function bestelling2(){ //neemt de bestelling versie 2 op (verouderd). 
+//   prijsweergave();
+//   rekening_check = false;
+//   while (rekening_check == false) { //doorgaan met vragen na invoeren bestelling
+//     breakCheck1 = false;
+//     var bestelling = prompt("Welke bestelling wilt u toevoegen?"); //een popup met de vraag wat je wil hebben
     
-    if (bestelling == "fris") { //checken wat er besteld word en daarna doorgaan met de volgende vraag
-      string1 = prompt("Hoeveel fris wilt u toevoegen aan uw bestelling?"); //een popup met de vraag hoeveel je wil hebben van een bepaald product
+//     if (bestelling == "fris") { //checken wat er besteld word en daarna doorgaan met de volgende vraag
+//       string1 = prompt("Hoeveel fris wilt u toevoegen aan uw bestelling?"); //een popup met de vraag hoeveel je wil hebben van een bepaald product
       
-      tijdelijke_opslag1 = parseInt(string1); //string prompt omzetten naar int en opslaan in een tijdelijke opslag
+//       tijdelijke_opslag1 = parseInt(string1); //string prompt omzetten naar int en opslaan in een tijdelijke opslag
 
-      if (!(isNaN(tijdelijke_opslag1)) && tijdelijke_opslag1 >= 0) { //checken of de tijdelijke opslag een int bevat
-        aantal_fris = tijdelijke_opslag1;
-      } else {
-        alert("U heeft een ongeldige invoer gedaan. Dit kan niet worden toegevoegd aan uw bestelling"); //melding bij ongeldige invoer
-      }
+//       if (!(isNaN(tijdelijke_opslag1)) && tijdelijke_opslag1 >= 0) { //checken of de tijdelijke opslag een int bevat
+//         aantal_fris = tijdelijke_opslag1;
+//       } else {
+//         alert("U heeft een ongeldige invoer gedaan. Dit kan niet worden toegevoegd aan uw bestelling"); //melding bij ongeldige invoer
+//       }
       
 
-    } else if (bestelling == "bier") { //checken wat er besteld word en daarna doorgaan met de volgende vraag
-      string2 = prompt("Hoeveel bier wilt u toevoegen aan uw bestelling?"); //een popup met de vraag hoeveel je wil hebben van een bepaald product
+//     } else if (bestelling == "bier") { //checken wat er besteld word en daarna doorgaan met de volgende vraag
+//       string2 = prompt("Hoeveel bier wilt u toevoegen aan uw bestelling?"); //een popup met de vraag hoeveel je wil hebben van een bepaald product
 
-      tijdelijke_opslag2 = parseInt(string2); //string prompt omzetten naar int en opslaan in een tijdelijke opslag
+//       tijdelijke_opslag2 = parseInt(string2); //string prompt omzetten naar int en opslaan in een tijdelijke opslag
 
-      if (!(isNaN(tijdelijke_opslag2)) && tijdelijke_opslag2 >= 0) { //checken of de tijdelijke opslag een int bevat
-        aantal_bier = tijdelijke_opslag2;
-      } else {
-        alert("U heeft een ongeldige invoer gedaan. Dit kan niet worden toegevoegd aan uw bestelling"); //melding bij ongeldige invoer
-      }
+//       if (!(isNaN(tijdelijke_opslag2)) && tijdelijke_opslag2 >= 0) { //checken of de tijdelijke opslag een int bevat
+//         aantal_bier = tijdelijke_opslag2;
+//       } else {
+//         alert("U heeft een ongeldige invoer gedaan. Dit kan niet worden toegevoegd aan uw bestelling"); //melding bij ongeldige invoer
+//       }
 
-    } else if (bestelling == "wijn") { //checken wat er besteld word en daarna doorgaan met de volgende vraag
-      string3 = prompt("Hoeveel wijn wilt u toevoegen aan uw bestelling?"); //een popup met de vraag hoeveel je wil hebben van een bepaald product
+//     } else if (bestelling == "wijn") { //checken wat er besteld word en daarna doorgaan met de volgende vraag
+//       string3 = prompt("Hoeveel wijn wilt u toevoegen aan uw bestelling?"); //een popup met de vraag hoeveel je wil hebben van een bepaald product
 
-      tijdelijke_opslag3 = parseInt(string3); //string prompt omzetten naar int en opslaan in een tijdelijke opslag
+//       tijdelijke_opslag1 = parseInt(string3); //string prompt omzetten naar int en opslaan in een tijdelijke opslag
 
-      if (!(isNaN(tijdelijke_opslag3)) && tijdelijke_opslag3 >= 0) { //checken of de tijdelijke opslag een int bevat
-        aantal_wijn = tijdelijke_opslag3;
-      } else {
-        alert("U heeft een ongeldige invoer gedaan. Dit kan niet worden toegevoegd aan uw bestelling"); //melding bij ongeldige invoer
-      }
+//       if (!(isNaN(tijdelijke_opslag1)) && tijdelijke_opslag1 >= 0) { //checken of de tijdelijke opslag een int bevat
+//         aantal_wijn = tijdelijke_opslag1;
+//       } else {
+//         alert("U heeft een ongeldige invoer gedaan. Dit kan niet worden toegevoegd aan uw bestelling"); //melding bij ongeldige invoer
+//       }
 
-    } else if (bestelling == "stop") { //als stop word opgegeven bij de prompt bestilling word de rekening weergeven
-      if (aantal_fris == 0 && aantal_bier == 0 && aantal_wijn == 0) { //checken of er iets is besteld
-        var doorgaan_vraag = prompt("u heeft geen bestelling opgenomen. Wilt u toch de rekening zien? (Y/N)");
+//     } else if (bestelling == "stop") { //als stop word opgegeven bij de prompt bestilling word de rekening weergeven
+//       if (aantal_fris == 0 && aantal_bier == 0 && aantal_wijn == 0) { //checken of er iets is besteld
+//         var doorgaan_vraag = prompt("u heeft geen bestelling opgenomen. Wilt u toch de rekening zien? (Y/N)");
 
-        if (doorgaan_vraag == "Y") { // checken of je door wil gaan naar de rekening als je niks hebt ingevuld en anders stoppen met de bestelling
-          rekening();
-          rekening_check = true;
-        } else if (doorgaan_vraag == "N") { // checken of je door wil gaan naar de rekening als je niks hebt ingevuld en anders stoppen met de bestelling
-          rekening_check = false;
-          breakCheck1 = true;
-          break;
-        }
-        break;
-      } else { 
-        rekening();
-        rekening_check = true;  
-      }
+//         if (doorgaan_vraag == "Y") { // checken of je door wil gaan naar de rekening als je niks hebt ingevuld en anders stoppen met de bestelling
+//           rekening();
+//           rekening_check = true;
+//         } else if (doorgaan_vraag == "N") { // checken of je door wil gaan naar de rekening als je niks hebt ingevuld en anders stoppen met de bestelling
+//           rekening_check = false;
+//           breakCheck1 = true;
+//           break;
+//         }
+//         break;
+//       } else { 
+//         rekening();
+//         rekening_check = true;  
+//       }
          
 
-    }else { //bij een ongeldige invoer melding geven
-      alert("U heeft een ongeldige invoer gedaan. Dit kan niet worden toegevoegd aan uw bestelling"); //melding bij ongeldige invoer
-    }
-  }
+//     }else { //bij een ongeldige invoer melding geven
+//       alert("U heeft een ongeldige invoer gedaan. Dit kan niet worden toegevoegd aan uw bestelling"); //melding bij ongeldige invoer
+//     }
+//   }
   
-}
-
+// }
 
 
 

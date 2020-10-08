@@ -1,0 +1,58 @@
+/* ************************ class styling ************************ */
+
+.home_link {
+    position: absolute;
+    margin-right: 20px;
+    right: 200px;    
+}
+
+.menu_link {
+    position: absolute;
+    margin-right: 20px;
+    right: 100px;
+}
+
+.body_container {
+    margin: auto;
+}
+
+.container p {
+    font-size: 30px;
+}
+
+.rekening p {
+    font-size: 20px;
+}
+
+/* ************************ id styling ************************ */
+
+#let_op {
+    color: red;
+    font-size: 17px;
+}
+
+#drinken_kopje {
+    font-size: 17px;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+}
+
+#warme_snacks_kopje {
+    font-size: 17px;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+}
+
+/* ************************ element styling ************************ */
+h1 {
+    color: #878b8f;
+}
+
+img {
+    max-width: 1000px;
+    max-height: 1000px;
+}
+
+button {
+    margin-bottom: 30px;
+}
