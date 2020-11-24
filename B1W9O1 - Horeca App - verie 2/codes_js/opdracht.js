@@ -6,7 +6,11 @@ opdracht: Horeca App
 
 */
 
+//speciale code
 //Math.abs(negatief); -> postief
+//.toLowerCase(); string veranderen van hoofdletters naar kleine letters
+//.toFixed(...); afronden op ... decimalen (aantal decimalen)
+//.replace('1', '2'); veranderd 1 in 2 (kan ook met andere tekens, letters en cijfers)
 
 //iets checken
 var rekening_check = false;
@@ -86,8 +90,8 @@ function rekening_weergave(){ //geeft de rekening weer op de website
   fris_cost = fris_price * aantal_fris;  //de berekening voor het te betalen bedrag van een product
 
   if (fris_cost != null && fris_cost != 0) { //deze funtie zorgt ervoor dat het element met het id tussen "...." verandert in de tekst eronder. 
-  document.getElementById("bedrag1").innerHTML =
-  aantal_fris + "x Fris ("+ fris_price.toFixed(2).replace('.', ',') +")";
+    document.getElementById("bedrag1").innerHTML =
+    aantal_fris + "x Fris ("+ fris_price.toFixed(2).replace('.', ',') +")";
   } else if (fris_cost == 0) {
     document.getElementById("bedrag1").innerHTML =
     "";
@@ -169,10 +173,10 @@ function rekening_weergave(){ //geeft de rekening weer op de website
     "";
   }
 
-  if (aantal_bitterballen2 != null && aantal_bitterballen2 != 0) { //deze funtie zorgt ervoor dat het element met het id tussen "...." verandert in de tekst eronder. 
+  if (bitterballen_cost2 != null && bitterballen_cost2 != 0) { //deze funtie zorgt ervoor dat het element met het id tussen "...." verandert in de tekst eronder. 
   document.getElementById("kostenP5").innerHTML =
-  "€" + aantal_bitterballen2.toFixed(2).replace('.', ',');
-  } else if (aantal_bitterballen2 == 0) {
+  "€" + bitterballen_cost2.toFixed(2).replace('.', ',');
+  } else if (bitterballen_cost2 == 0) {
     document.getElementById("kostenP5").innerHTML =
     "";
   }
@@ -203,7 +207,7 @@ function bestelling(){ //neemt de bestelling op
   rekening_check = false;
   while (rekening_check == false) { //doorgaan met vragen na invoeren bestelling
     breakCheck1 = false;
-    var bestelling = prompt("Welke bestelling wilt u toevoegen?"); //een popup met de vraag wat je wil hebben
+    var bestelling = prompt("Welke bestelling wilt u toevoegen?").toLowerCase(); //een popup met de vraag wat je wil hebben
     
     if (bestelling == "fris") { //checken wat er besteld word en daarna doorgaan met de volgende vraag
       tijdelijke_opslag1 = parseInt(prompt("Hoeveel fris wilt u toevoegen aan uw bestelling?", "0")); //een popup met de vraag hoeveel je wil hebben van een bepaald product
